@@ -1,17 +1,18 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 class Student
 {
 private:
-    string name;
+    char name[50];
     int roll_no;
     int marks[6];
 
 public:
-    Student(string name, int roll, int marks[])
+    Student(char *sname, int roll, int marks[])
     {
-        this->name = name;
+        strcpy(name, sname);
         roll_no = roll;
         for (int i = 0; i < 6; i++)
         {
@@ -48,10 +49,27 @@ public:
 
 int main()
 {
-    int marks1[] = {79, 76, 78, 87, 89, 98};
+    int n = 0;
+    char name[20];
+    int roll;
+    int submarks[6];
+    cout << "enter the number of student:";
+    cin >> n;
 
-    Student *s1 = new Student("student1", 01, marks1);
-    s1->getMarks();
-    cout << s1->getAvg() << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Enter the name of a student [" << i + 1<<"] :";
+        cin >> name;
+        cout << "Enter roll no:";
+        cin >> roll;
+
+        for (int j = 0; j < 6; j++)
+        {
+            cout << "enter the marks of sub " << j + 1 << " :";
+            cin >> submarks[j];
+        }
+        Student *s1 = new Student(name, roll, submarks);
+        cout << "Avg of student[" << i + 1 << "] will be:" << s1->getAvg() << endl;
+    }
     return 0;
 }
