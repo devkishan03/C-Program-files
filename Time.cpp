@@ -1,22 +1,29 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 class Time
 {
 private:
-    int hour = 0;
-    int minute = 0;
-    int second = 0;
+    int hour;
+    int minute;
+    int second;
 
 public:
     Time()
     {
+        hour = 0;
+        minute = 0;
+        second = 0;
     }
     Time(int ss)
     {
+        hour = 0;
+        minute = 0;
         setSecond(ss);
     }
     Time(int mm, int ss)
     {
+        hour = 0;
         setMinute(mm);
         setSecond(ss);
     }
@@ -63,7 +70,14 @@ public:
 
     void display()
     {
-        printf("%02d:%02d:%02d\n", getHour(), getMinute(), getSecond());
+        // printf("%02d:%02d:%02d\n", getHour(), getMinute(), getSecond());
+        cout.width(2);
+        cout.fill('0');
+        cout << getHour() << ":";
+        cout.width(2);
+        cout << getMinute() << ":";
+        cout.width(2);
+        cout << getSecond() << endl;
     }
 };
 int main()
@@ -72,10 +86,10 @@ int main()
     t1.display();
 
     Time t2(9, 5);
-    t2.display();
+    // t2.display();
 
     Time t3(9, 5, 4);
-    t3.display();
+    // t3.display();
 
     // Time t4(26, 75, 78);
     // t4.display();
